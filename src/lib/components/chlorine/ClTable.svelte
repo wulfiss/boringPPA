@@ -93,22 +93,22 @@ $: filteredItems = data.filter(item => {
       <!-- head -->
       <thead>
         <tr>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Sector</th>
-          <th>Grifo</th>
-          <th>Concentración (ppm)</th>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Hora</th>
+          <th class="text-center">Sector</th>
+          <th class="text-center">Grifo</th>
+          <th class="text-center">Concentración (ppm)</th>
         </tr>
       </thead>
       <tbody>
         <!-- body -->
         {#each filteredItems as item, i}
         <tr>
-          <th>{item.fecha}</th>
-          <td>{item.hora}</td>
-          <td>{item.sector}</td>
-          <td>{item.grifo}</td>
-          <td>{item.concentracion}</td>
+          <th class="text-center">{item.fecha}</th>
+          <td class="text-center">{item.hora}</td>
+          <td class="text-center">{item.sector}</td>
+          <td class="text-center">{item.grifo}</td>
+          <td class="text-center">{item.concentracion}</td>
         </tr>
         {/each}
       </tbody>
