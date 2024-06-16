@@ -27,7 +27,7 @@
 <dialog bind:this={my_modal_1} class="modal">
   <div class="modal-box">
     <h3 class="font-bold text-lg">Cloro</h3>
-    <div class="modal-action">
+    <div class="modal-action flex justify-center">
       <form method="dialog">
         <label class="form-control w-full max-w-xs">
           <div class="label">
