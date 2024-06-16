@@ -22,7 +22,11 @@
     <p class="py-4">Press ESC key or click the button below to close</p>
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
+        <input type="date" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <input type="time" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
         <button class="btn">Close</button>
         <button class="btn">Save</button>
       </form>
