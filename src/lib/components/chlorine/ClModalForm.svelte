@@ -22,7 +22,7 @@
   });
 </script>
 
-<button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>open modal</button>
+<button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>Agregar medición</button>
 
 <dialog bind:this={my_modal_1} class="modal">
   <div class="modal-box">
