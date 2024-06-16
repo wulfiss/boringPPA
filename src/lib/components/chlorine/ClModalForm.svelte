@@ -26,8 +26,7 @@
 
 <dialog bind:this={my_modal_1} class="modal">
   <div class="modal-box">
-    <h3 class="font-bold text-lg">Cloro</h3>
-    <div class="modal-action flex justify-center">
+    <div class="modal-action flex justify-center mt-0">
       <form method="dialog">
         <label class="form-control w-full max-w-xs">
           <div class="label">
@@ -51,9 +50,15 @@
           <div class="label">
             <span class="label-text">Sector</span>
           </div>
-          <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-          <div class="label">
-          </div>
+          <select class="select select-bordered w-full max-w-xs">
+            <option>Zona Sucia</option>
+            <option selected>Zona Intermedia</option>
+            <option>Sala de Eviscerado</option>
+            <option>Sala de Enfriado</option>
+            <option>Empaque de Garras</option>
+            <option>Empaque de Pollos</option>
+            <option>Sala de Trozado</option>
+          </select>
         </label>
         
         <label class="form-control w-full max-w-xs">
@@ -73,8 +78,10 @@
           <div class="label">
           </div>
         </label>
-        <button class="btn">Close</button>
-        <button class="btn">Save</button>
+        <div class="flex space-x-1">
+          <button class="btn btn-error">Cerrar</button>
+          <button class="btn flex-1 btn-success">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
