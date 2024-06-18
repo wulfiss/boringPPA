@@ -1,92 +1,41 @@
-<script>
-/**
-	 * @type {any[]}
-	 */
- export let chlorine = [];
-/* let data = [
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 2",
-    grifo: "Grifo 2",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 4",
-    grifo: "Grifo 5",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "calle 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2022-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2023-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  },
-  {
-    fecha: "2021-10-01",
-    hora: "10:00",
-    sector: "Sector 1",
-    grifo: "Grifo 1",
-    concentracion: "1.5"
-  }
-] */
-console.log(chlorine)
-let searchTerm = "";
+<script lang="ts">
 
-$: filteredItems = chlorine.filter((/** @type {{ date: string; location: string; tap: number }} */ item) => {
+  export let chlorineData; // Replace 'any' with the actual type of the 'chlorineData' variable.
+  let filteredItems: never[] = [];
+  let searchTerm = "";
+
+  console.log('uno', chlorineData)
+  async function filterItems() {
+    if (chlorineData.length === 0) {
+      // Wait for chlorineData if it's still being fetched
+      await new Promise<void>(resolve => {
+        const unsubscribe = chlorineData.subscribe(() => {
+          resolve();
+          unsubscribe();
+        });
+      });
+    }
+  }
+
+  const searchLower = searchTerm.toLowerCase();
+  filteredItems = chlorineData.filter(item => {
+    return(
+      item.date.toLowerCase().includes(searchLower) ||
+      item.location.toLowerCase().includes(searchLower) ||
+      item.tap.toString().includes(searchLower)
+    )
+  })
+/* $: filteredItems = chlorineData.filter((item) => {
    const searchLower = searchTerm.toLowerCase();
    return item.date.toLowerCase().includes(searchLower) || 
-    item.location.toLowerCase().includes(searchLower) || 
+    item.location.toLowerCase().includes(searchLower) ||
     // @ts-ignore
     item.tap.includes(searchLower);
 });
+ */
 
-
+$: searchTerm, filterItems();
+console.log('dos', filteredItems)
 </script>
 
 <div class="overflow-x-auto">
@@ -109,11 +58,11 @@ $: filteredItems = chlorine.filter((/** @type {{ date: string; location: string;
         <!-- body -->
         {#each filteredItems as item, i}
         <tr>
-          <th class="text-center">{item.fecha}</th>
-          <td class="text-center">{item.hora}</td>
-          <td class="text-center">{item.sector}</td>
-          <td class="text-center">{item.grifo}</td>
-          <td class="text-center">{item.concentracion}</td>
+          <th class="text-center">{item.date}</th>
+          <td class="text-center">{item.time}</td>
+          <td class="text-center">{item.location}</td>
+          <td class="text-center">{item.tap}</td>
+          <td class="text-center">{item.freeChlorine}</td>
         </tr>
         {/each}
       </tbody>
